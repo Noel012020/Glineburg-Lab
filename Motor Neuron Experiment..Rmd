@@ -43,3 +43,28 @@ ggplot(data.clean.1, aes(x = condition, y = flies_passed, fill = condition)) +
 ```{r}
 t.test(flies_passed ~ condition, data = data.clean.1, var.equal = FALSE)
 ```
+
+## Loading Data & Cleaning For Experiment Attempt #2
+```{r}
+data.atmpt.2 <- read.csv("fly_motor_test_atmpt-2.csv")
+
+data.clean.2 <- data.atmpt.2 %>%
+clean_names() %>%
+remove_empty(which = c("rows","cols")) %>%
+na.omit(data)
+```
+
+## Statistical Analysis For Experiment Attempt #2
+```{r}
+ggplot(data.clean.2, aes(x = condition, y = flies_passed, fill = condition)) +
+  geom_boxplot(width = 0.5) +
+  geom_jitter(width = 0.05, alpha = 0.50) +
+  labs(title = "Fly Climbing Performance: Control vs p58IPK Knockdown",
+       x = "Condition",
+       y = "Flies Crossing 8 cm") +
+  theme(text = element_text(family = "serif"))
+```
+
+```{r}
+t.test(flies_passed ~ condition, data = data.clean.2, var.equal = FALSE)
+```
