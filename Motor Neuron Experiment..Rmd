@@ -1,0 +1,16 @@
+---
+title: "Motor Neuron Experiment"
+author: "Noel Pop"
+date: "2025-11-13"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#loading required libraries
+```
+
+## Loading Data
+```{r}
+data <- read.csv("fly_motor_test.csv")
+```
