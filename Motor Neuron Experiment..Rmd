@@ -22,7 +22,7 @@ library(extrafont)
 
 ## Loading Data & Cleaning For Experiment Attempt #1
 ```{r}
-data.atmpt.1 <- read.csv("fly_motor_test_atmpt-1.csv")
+data.atmpt.1 <- read.csv("Motor Neuron Data/fly_motor_test_atmpt-1.csv")
 
 data.clean.1 <- data.atmpt.1 %>%
 clean_names() %>%
@@ -46,7 +46,7 @@ t.test(flies_passed ~ condition, data = data.clean.1, var.equal = FALSE)
 
 ## Loading Data & Cleaning For Experiment Attempt #2
 ```{r}
-data.atmpt.2 <- read.csv("fly_motor_test_atmpt-2.csv")
+data.atmpt.2 <- read.csv("Motor Neuron Data/fly_motor_test_atmpt-2.csv")
 
 data.clean.2 <- data.atmpt.2 %>%
 clean_names() %>%
