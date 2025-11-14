@@ -28,6 +28,9 @@ data.clean.1 <- data.atmpt.1 %>%
 clean_names() %>%
 remove_empty(which = c("rows","cols")) %>%
 na.omit(data)
+
+data.clean.1.filtered <- data.clean.1 %>%
+filter(flies_passed >= 8)
 ```
 
 ## Statistical Analysis For Experiment Attempt #1
@@ -43,6 +46,21 @@ ggplot(data.clean.1, aes(x = condition, y = flies_passed, fill = condition)) +
 ```{r}
 t.test(flies_passed ~ condition, data = data.clean.1, var.equal = FALSE)
 ```
+## Statistical Analysis For Experiment Attempt #1 - Filtered
+```{r}
+ggplot(data.clean.1.filtered, aes(x = condition, y = flies_passed, fill = condition)) +
+  geom_boxplot(width = 0.5) +
+  geom_jitter(width = 0.05, alpha = 0.50) +
+  labs(title = "Fly Climbing Performance: Control vs p58IPK Knockdown",
+       x = "Condition",
+       y = "Flies Crossing 8 cm") +
+  theme(text = element_text(family = "serif"))
+```
+
+```{r}
+t.test(flies_passed ~ condition, data = data.clean.1.filtered, var.equal = FALSE)
+```
+
 
 ## Loading Data & Cleaning For Experiment Attempt #2
 ```{r}
@@ -52,6 +70,9 @@ data.clean.2 <- data.atmpt.2 %>%
 clean_names() %>%
 remove_empty(which = c("rows","cols")) %>%
 na.omit(data)
+
+data.clean.2.filtered <- data.clean.2 %>%
+filter(flies_passed >= 10)
 ```
 
 ## Statistical Analysis For Experiment Attempt #2
@@ -67,4 +88,20 @@ ggplot(data.clean.2, aes(x = condition, y = flies_passed, fill = condition)) +
 
 ```{r}
 t.test(flies_passed ~ condition, data = data.clean.2, var.equal = FALSE)
+```
+
+
+## Statistical Analysis For Experiment Attempt #2 - Filtered
+```{r}
+ggplot(data.clean.2.filtered, aes(x = condition, y = flies_passed, fill = condition)) +
+  geom_boxplot(width = 0.5) +
+  geom_jitter(width = 0.05, alpha = 0.50) +
+  labs(title = "Fly Climbing Performance: Control vs p58IPK Knockdown",
+       x = "Condition",
+       y = "Flies Crossing 8 cm") +
+  theme(text = element_text(family = "serif"))
+```
+
+```{r}
+t.test(flies_passed ~ condition, data = data.clean.2.filtered, var.equal = FALSE)
 ```
